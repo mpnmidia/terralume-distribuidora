@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tema base da plataforma */
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  @apply min-h-screen bg-slate-950 text-slate-50 antialiased;
+}
+
+body {
+  @apply bg-slate-950 text-slate-50;
+}
+
+a {
+  @apply text-emerald-300 hover:text-emerald-200;
+}
+
+/* Containers padrão */
+.main-container {
+  @apply max-w-6xl mx-auto px-4 lg:px-10;
+}

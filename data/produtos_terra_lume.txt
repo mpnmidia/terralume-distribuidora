@@ -1,0 +1,20 @@
+name;sku;category;unit;description;unit_price;promo_price;offer_is_active;image_url;offer_image_url
+Biscoito Cream Cracker 20x350g;SUP-CRM-350;Biscoitos;cx;Biscoito Cream Cracker Tradicional Supradely 20 pacotes de 350g;0;0;true;;
+Biscoito Maizena 20x350g;SUP-MAI-350;Biscoitos;cx;Biscoito Maizena Supradely 20 pacotes de 350g;0;0;true;;
+Biscoito Maria 20x350g;SUP-MAR-350;Biscoitos;cx;Biscoito Maria Supradely 20 pacotes de 350g;0;0;true;;
+Rosquinha de Coco Petyan 20x500g;PET-ROS-COC-500;Rosquinhas;cx;Rosquinha de Coco Petyan 20 pacotes de 500g;0;0;true;;
+Rosquinha sabor Leite 20x300g;SUP-ROS-LEI-300;Rosquinhas;cx;Rosquinha sabor Leite Supradely 20 pacotes de 300g;0;0;true;;
+Rosquinha de Coco 20x300g;SUP-ROS-COC-300;Rosquinhas;cx;Rosquinha de Coco Supradely 20 pacotes de 300g;0;0;true;;
+Rosquinha de Coco 20x300g (embalagem verde);SUP-ROS-COC-300-A;Rosquinhas;cx;Rosquinha de Coco Supradely embalagem verde 20 pacotes de 300g;0;0;true;;
+Macarrão Curvinha Petyan 10x1kg;PET-MAC-CUR-1KG;Massas;cx;Macarrão Curvinha Petyan 10 pacotes de 1kg;0;0;true;;
+Macarrão Curvinha Petyan 10x1kg (variação);PET-MAC-CUR-1KG-A;Massas;cx;Macarrão Curvinha Petyan embalagem dupla 10 pacotes de 1kg;0;0;true;;
+Amendoim Japonês 30x70g;KUK-AMN-JAP-70;Snacks;cx;Amendoim tipo japonês Kuky 30 pacotes de 70g;0;0;true;;
+Amendoim Colorido 30x70g;KUK-AMN-COR-70;Snacks;cx;Amendoim confeitado colorido Kuky 30 pacotes de 70g;0;0;true;;
+Amendoim Chocolate 30x70g;KUK-AMN-CHO-70;Snacks;cx;Amendoim confeitado chocolate Kuky 30 pacotes de 70g;0;0;true;;
+Kuky Goma Festa 30x70g;KUK-GOM-FES-70;Balas/Gomas;cx;Kuky Goma Festa sortida 30 pacotes de 70g;0;0;true;;
+Kuky Delikuky Jelly Beans 30x70g;KUK-JEL-FES-70;Balas/Gomas;cx;Kuky Delikuky Jelly Beans sortidas 30 pacotes de 70g;0;0;true;;
+Gelatina Go Jelly Amora 12x70g;RIC-GEL-AMO-70;Gelatinas;cx;Gelatina Go Jelly sabor Amora 12 pacotes de 70g;0;0;true;;
+Gelatina Go Jelly Banana 12x70g;RIC-GEL-BAN-70;Gelatinas;cx;Gelatina Go Jelly sabor Banana 12 pacotes de 70g;0;0;true;;
+Gelatina Go Jelly Morango 12x70g;RIC-GEL-MOR-70;Gelatinas;cx;Gelatina Go Jelly sabor Morango 12 pacotes de 70g;0;0;true;;
+Gelatina Go Jelly Beijinho Doce 12x70g;RIC-GEL-BEI-70;Gelatinas;cx;Gelatina Go Jelly sabor Beijinho Doce 12 pacotes de 70g;0;0;true;;
+Gelatina Go Jelly Dentadura 12x70g;RIC-GEL-DEN-70;Gelatinas;cx;Gelatina Go Jelly Dentadura 12 pacotes de 70g;0;0;true;;

@@ -1,0 +1,18 @@
+name;sku;category;unit;description;unit_price;promo_price;offer_is_active;image_url;offer_image_url
+Biscoito Cream Cracker 20x350g;SUP-CRM-350;Biscoitos;cx;Biscoito Cream Cracker Supradely 20 pacotes de 350g;0;0;false;;
+Biscoito Maizena 20x350g;SUP-MAI-350;Biscoitos;cx;Biscoito Maizena Supradely 20 pacotes de 350g;0;0;false;;
+Biscoito Maria 20x350g;SUP-MAR-350;Biscoitos;cx;Biscoito Maria Supradely 20 pacotes de 350g;0;0;false;;
+Rosquinha Coco 20x300g;SUP-ROS-COC-300;Rosquinhas;cx;Rosquinha sabor coco Supradely 20 pacotes de 300g;0;0;false;;
+Rosquinha Leite 20x300g;SUP-ROS-LEI-300;Rosquinhas;cx;Rosquinha sabor leite Supradely 20 pacotes de 300g;0;0;false;;
+Rosquinha Coco 20x500g;PET-ROS-COC-500;Rosquinhas;cx;Rosquinha de coco Petyan 20 pacotes de 500g;0;0;false;;
+Macarrão Curvinha Petyan 10x1kg;PET-MAC-CUR-1KG;Massas;cx;Macarrão Curvinha Petyan 10 pacotes de 1kg;0;0;false;;
+Amendoim Japonês 30x70g;KUK-AMN-JAP-70;Snacks;cx;Amendoim tipo japonês Kuky 30 pacotes de 70g;0;0;false;;
+Amendoim Chocolate 30x70g;KUK-AMN-CHO-70;Snacks;cx;Amendoim confeitado com chocolate Kuky 30 pacotes de 70g;0;0;false;;
+Amendoim Colorido 30x70g;KUK-AMN-COR-70;Snacks;cx;Amendoim confeitado colorido Kuky 30 pacotes de 70g;0;0;false;;
+Kuky Goma Festa 30x70g;KUK-GOM-FES-70;Balas/Gomas;cx;Kuky Goma Festa sortida 30 pacotes de 70g;0;0;false;;
+Kuky Delikuky Jelly Beans 30x70g;KUK-JEL-FES-70;Balas/Gomas;cx;Jelly Beans Delikuky 30 pacotes de 70g;0;0;false;;
+Gelatina Amora 12x70g;RIC-GEL-AMO-70;Gelatinas;cx;Gelatina Go Jelly sabor Amora 12 pacotes de 70g;0;0;false;;
+Gelatina Banana 12x70g;RIC-GEL-BAN-70;Gelatinas;cx;Gelatina Go Jelly sabor Banana 12 pacotes de 70g;0;0;false;;
+Gelatina Morango 12x70g;RIC-GEL-MOR-70;Gelatinas;cx;Gelatina Go Jelly sabor Morango 12 pacotes de 70g;0;0;false;;
+Gelatina Beijinho Doce 12x70g;RIC-GEL-BEI-70;Gelatinas;cx;Gelatina Go Jelly sabor Beijinho Doce 12 pacotes de 70g;0;0;false;;
+Gelatina Dentadura 12x70g;RIC-GEL-DEN-70;Gelatinas;cx;Gelatina Go Jelly Dentadura 12 pacotes de 70g;0;0;false;;
