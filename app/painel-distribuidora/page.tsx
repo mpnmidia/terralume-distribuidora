@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -22,7 +22,7 @@ const PainelDistribuidoraPage: React.FC = () => {
         router.replace("/painel");
         return;
       }
-      setUser({ email: data.user.email });
+      setUser({ email: data.user?.email ?? null });
       setLoading(false);
     };
 
