@@ -1,4 +1,4 @@
-﻿import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 
 export const runtime = "nodejs";
@@ -186,7 +186,7 @@ export async function POST(req: NextRequest) {
         sizeBytes,
         bucket: BUCKET_NAME,
         path: filePath,
-        publicUrl: undefined,
+        publicUrl: null,
         productRegistered: false,
         errorMessage: uploadError.message,
         extra: {

@@ -1,7 +1,7 @@
-﻿"use client";
+"use client";
 
 import { useMemo, useState } from "react";
-import type { ProductRow } from "./types";
+import type { ProductRow } from "./page";
 
 type Product = ProductRow;
 
@@ -421,4 +421,3 @@ export default function CatalogoClient({ initialProducts, showPrices }: Props) {
     </div>
   );
 }
-

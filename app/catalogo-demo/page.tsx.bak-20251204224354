@@ -1,5 +1,5 @@
-﻿import CatalogoClient from "../catalogo/CatalogoClient";
-import type { ProductRow } from "../catalogo/types";
+import CatalogoClient from "../catalogo/CatalogoClient";
+import type { ProductRow } from "../catalogo/page";
 
 export const revalidate = 0;
 

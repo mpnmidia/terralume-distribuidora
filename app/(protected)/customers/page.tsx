@@ -1,5 +1,10 @@
-// app/(protected)/customers/page.tsx
-import { createSupabaseServerClient } from "@/lib/supabaseServerClient";
+﻿import { createSupabaseServerClient } from "@/lib/supabaseServerClient";
+import React from "react";
+
+type DeliveryRoute = {
+  name: string | null;
+  day_of_week: string | null;
+};
 
 type CustomerRow = {
   id: string;
@@ -12,10 +17,7 @@ type CustomerRow = {
   state: string | null;
   address: string | null;
   payment_terms: string | null;
-  delivery_routes?: {
-    name: string | null;
-    day_of_week: string | null;
-  } | null;
+  delivery_routes?: DeliveryRoute[] | null;
 };
 
 export const revalidate = 0;
@@ -50,17 +52,40 @@ export default async function CustomersPage() {
     console.error("Erro ao carregar clientes:", error);
   }
 
-  const customers = (data ?? []) as CustomerRow[];
+  // Normaliza/valida cada cliente para garantir que bate com CustomerRow
+  const customers: CustomerRow[] = (Array.isArray(data) ? data : []).map((d: any) => {
+    return {
+      id: String(d?.id ?? ""),
+      name: d?.name ?? null,
+      trade_name: d?.trade_name ?? null,
+      cnpj: d?.cnpj ?? null,
+      email: d?.email ?? null,
+      phone: d?.phone ?? null,
+      city: d?.city ?? null,
+      state: d?.state ?? null,
+      address: d?.address ?? null,
+      payment_terms: d?.payment_terms ?? null,
+      delivery_routes: Array.isArray(d?.delivery_routes)
+        ? d.delivery_routes.map((r: any) => ({
+            name: r?.name ?? null,
+            day_of_week: r?.day_of_week ?? null,
+          }))
+        : [],
+    } as CustomerRow;
+  });
 
   const totalClients = customers.length;
+
   const cities = new Set(
     customers
       .map((c) => `${c.city ?? ""}|${c.state ?? ""}`)
       .filter((s) => s.trim() !== "|")
   );
+
   const routes = new Set(
     customers
-      .map((c) => c.delivery_routes?.name ?? "")
+      .flatMap((c) => c.delivery_routes ?? [])
+      .map((r) => r.name ?? "")
       .filter((s) => s.trim() !== "")
   );
 
@@ -78,135 +103,56 @@ export default async function CustomersPage() {
         </button>
       </header>
 
-      {/* Resumo */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-        <SummaryCard
-          title="Clientes ativos (demo)"
-          value={totalClients.toString()}
-          description="Total de clientes cadastrados nessa empresa demo"
-        />
-        <SummaryCard
-          title="Cidades atendidas"
-          value={cities.size.toString()}
-          description="Combinações distintas de cidade / UF"
-        />
-        <SummaryCard
-          title="Rotas configuradas"
-          value={routes.size.toString()}
-          description="Rotas de entrega vinculadas a clientes"
-        />
-      </section>
+      <section>
+        <p className="text-sm text-slate-300">
+          Total de clientes: <strong>{totalClients}</strong>
+        </p>
 
-      {/* Tabela */}
-      <section className="bg-slate-900/70 border border-slate-700 rounded-xl p-4 text-xs overflow-hidden">
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-sm font-semibold text-slate-100">
-            Carteira de clientes
-          </h2>
-          <span className="text-[11px] text-slate-500">
-            Fonte: tabela <span className="text-slate-300">customers</span> (Supabase)
-          </span>
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-slate-800 p-4 rounded">
+            <h2 className="text-sm font-medium text-slate-200">Cidades ({cities.size})</h2>
+            <ul className="mt-2 text-sm text-slate-300">
+              {Array.from(cities).slice(0, 20).map((c) => (
+                <li key={c}>{c}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="bg-slate-800 p-4 rounded">
+            <h2 className="text-sm font-medium text-slate-200">Rotas ({routes.size})</h2>
+            <ul className="mt-2 text-sm text-slate-300">
+              {Array.from(routes).slice(0, 20).map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          </div>
         </div>
+      </section>
 
-        {customers.length === 0 ? (
-          <div className="text-[11px] text-slate-400">
-            Nenhum cliente encontrado para esta empresa.
-          </div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="min-w-full text-[11px]">
-              <thead>
-                <tr className="text-slate-400 border-b border-slate-800">
-                  <th className="text-left py-2 pr-3 font-normal">Cliente</th>
-                  <th className="text-left py-2 pr-3 font-normal">CNPJ</th>
-                  <th className="text-left py-2 pr-3 font-normal">Cidade/UF</th>
-                  <th className="text-left py-2 pr-3 font-normal">Rota</th>
-                  <th className="text-left py-2 pr-3 font-normal">Condição</th>
-                  <th className="text-left py-2 pr-3 font-normal">Contato</th>
-                </tr>
-              </thead>
-              <tbody>
-                {customers.map((c) => {
-                  const fantasy = c.trade_name ?? c.name ?? "—";
-                  const cityUf =
-                    c.city && c.state
-                      ? `${c.city} / ${c.state}`
-                      : c.city ?? "—";
-                  const routeName = c.delivery_routes?.name ?? "—";
-                  const routeDay = c.delivery_routes?.day_of_week ?? "";
-                  const cond = c.payment_terms ?? "—";
-
-                  return (
-                    <tr
-                      key={c.id}
-                      className="border-b border-slate-800/60 last:border-0 hover:bg-slate-800/40"
-                    >
-                      <td className="py-2 pr-3">
-                        <div className="flex flex-col">
-                          <span className="text-slate-100 font-medium">
-                            {fantasy}
-                          </span>
-                          {c.name && c.name !== fantasy && (
-                            <span className="text-[10px] text-slate-500">
-                              Razão social: {c.name}
-                            </span>
-                          )}
-                        </div>
-                      </td>
-                      <td className="py-2 pr-3 text-slate-300">
-                        {c.cnpj ?? "—"}
-                      </td>
-                      <td className="py-2 pr-3 text-slate-300">
-                        {cityUf}
-                      </td>
-                      <td className="py-2 pr-3 text-slate-300">
-                        <div className="flex flex-col">
-                          <span>{routeName}</span>
-                          {routeDay && (
-                            <span className="text-[10px] text-slate-500">
-                              {routeDay}
-                            </span>
-                          )}
-                        </div>
-                      </td>
-                      <td className="py-2 pr-3 text-slate-300">
-                        {cond}
-                      </td>
-                      <td className="py-2 pr-3 text-slate-300">
-                        <div className="flex flex-col">
-                          <span>{c.phone ?? "—"}</span>
-                          <span className="text-[10px] text-slate-500">
-                            {c.email ?? ""}
-                          </span>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        )}
+      <section className="mt-6">
+        <h2 className="text-lg font-medium text-slate-100">Lista rápida de clientes</h2>
+        <div className="mt-3 space-y-2">
+          {customers.slice(0, 30).map((c) => {
+            const firstRoute = Array.isArray(c.delivery_routes) && c.delivery_routes.length > 0 ? c.delivery_routes[0] : null;
+            const routeName = firstRoute?.name ?? "—";
+            const routeDay = firstRoute?.day_of_week ?? "";
+            return (
+              <div key={c.id} className="bg-slate-800 p-3 rounded">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-sm font-semibold text-slate-100">{c.trade_name ?? c.name ?? "—"}</div>
+                    <div className="text-xs text-slate-400">{c.city ?? "—"} {c.state ? `/ ${c.state}` : ""}</div>
+                  </div>
+                  <div className="text-xs text-slate-300 text-right">
+                    <div>{routeName}</div>
+                    <div className="text-xs text-slate-400">{routeDay}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </section>
     </div>
   );
 }
-
-function SummaryCard({
-  title,
-  value,
-  description
-}: {
-  title: string;
-  value: string;
-  description: string;
-}) {
-  return (
-    <div className="bg-slate-900/70 border border-slate-700 rounded-xl p-3">
-      <div className="text-[11px] text-slate-400">{title}</div>
-      <div className="text-lg font-semibold text-slate-50">{value}</div>
-      <div className="text-[11px] text-slate-500 mt-1">{description}</div>
-    </div>
-  );
-}
-
